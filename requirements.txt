@@ -9,7 +9,7 @@ opencv-python-headless>=4.8.0  # Headless version for servers
 
 matplotlib>=3.7.0  # Updated for Pi 5
 tqdm>=4.65.0
-scikit-learn>=1.3.0  # Updated for Pi 5 ARM64
+scikit-learn>=1.4.0  # Updated for Pi 5 ARM64 and Python 3.13 compatibility
 scipy>=1.11.0  # Updated for Pi 5
 networkx>=3.0
 
@@ -67,7 +67,9 @@ isort>=5.12.0
 sphinx>=7.0.0
 sphinx-rtd-theme>=1.3.0
 
-# Pi 5 specific optimizations
-# Add Pi 5 specific packages
-adafruit-circuitpython-neopixel>=6.4.0  # For advanced LED control
-adafruit-circuitpython-motor>=3.4.0    # Enhanced motor control 
+# Pi 5 specific optimizations (optional - may have version conflicts)
+# adafruit-circuitpython-neopixel>=6.3.18  # For advanced LED control (commented due to version conflicts)
+# adafruit-circuitpython-motor>=3.4.0      # Enhanced motor control (commented due to version conflicts)
+
+# TensorFlow Lite (optional - may not be available for Python 3.13)
+# tflite-runtime>=2.5.0  # Commented due to Python 3.13 compatibility issues 
