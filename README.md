@@ -1,4 +1,4 @@
-# PiRobot V.4 - Raspberry Pi 5 Edition
+# Raspberry Pi 5 Edition
 
 An advanced autonomous robot system with enhanced safety features, collision detection, and room mapping capabilities, optimized for Raspberry Pi 5.
 
