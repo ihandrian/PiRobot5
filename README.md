@@ -17,7 +17,7 @@ An advanced autonomous robot system with enhanced safety features, collision det
 ## Project Structure
 
 ```
-PiRobot-V.4/
+PiRobot5/
 ├── config/
 │   └── data_collector.yaml    # Configuration settings
 ├── src/
@@ -45,8 +45,8 @@ PiRobot-V.4/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ihandrian/PiRobot-V.4.git
-   cd PiRobot-V.4
+   git clone https://github.com/ihandrian/PiRobot5.git
+   cd PiRobot5
    ```
 
 2. Run the setup script (as root):
@@ -74,8 +74,8 @@ PiRobot-V.4/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ihandrian/PiRobot-V.4.git
-   cd PiRobot-V.4
+   git clone https://github.com/ihandrian/PiRobot5.git
+   cd PiRobot5
    ```
 
 2. Create and activate virtual environment:
@@ -149,6 +149,11 @@ PiRobot-V.4/
 - 128MB GPU memory (optimized for Pi 5's VideoCore VII)
 - 5V 4A power supply (Pi 5 specific requirement)
 
+1. Fork the repository at https://github.com/ihandrian/PiRobot5
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 ## System Optimizations
 
 The setup script (`setup_pi.sh`) includes several optimizations for Raspberry Pi 5:
@@ -163,11 +168,6 @@ The setup script (`setup_pi.sh`) includes several optimizations for Raspberry Pi
 
 ## Contributing
 
-1. Fork the repository at https://github.com/ihandrian/PiRobot-V.4
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
 
 ## License
 

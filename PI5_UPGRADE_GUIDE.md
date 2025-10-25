@@ -44,7 +44,7 @@ sudo tar -czf pirobot_backup_$(date +%Y%m%d).tar.gz /home/pi/PiRobot5/
 rm -rf /home/pi/PiRobot5
 
 # Clone updated version
-git clone https://github.com/ihandrian/PiRobot-V.4.git /home/pi/PiRobot5
+git clone https://github.com/ihandrian/PiRobot5.git /home/pi/PiRobot5
 cd /home/pi/PiRobot5
 ```
 
