@@ -1,0 +1,137 @@
+{
+    "motor": {
+        "left": {
+            "pwm_frequency": 1000,
+            "pwm_duty_cycle": 0,
+            "direction_pin": 17,
+            "enable_pin": 18,
+            "encoder_pin_a": 27,
+            "encoder_pin_b": 22,
+            "max_speed": 100,
+            "acceleration": 0.5,
+            "deceleration": 0.5,
+            "power_save_mode": true,
+            "idle_timeout": 30
+        },
+        "right": {
+            "pwm_frequency": 1000,
+            "pwm_duty_cycle": 0,
+            "direction_pin": 23,
+            "enable_pin": 24,
+            "encoder_pin_a": 25,
+            "encoder_pin_b": 8,
+            "max_speed": 100,
+            "acceleration": 0.5,
+            "deceleration": 0.5,
+            "power_save_mode": true,
+            "idle_timeout": 30
+        }
+    },
+    "encoder": {
+        "left": {
+            "pin_a": 27,
+            "pin_b": 22,
+            "ppr": 20,
+            "sample_rate": 100,
+            "buffer_size": 10,
+            "debounce_time": 1,
+            "power_save_mode": true,
+            "idle_timeout": 30
+        },
+        "right": {
+            "pin_a": 25,
+            "pin_b": 8,
+            "ppr": 20,
+            "sample_rate": 100,
+            "buffer_size": 10,
+            "debounce_time": 1,
+            "power_save_mode": true,
+            "idle_timeout": 30
+        }
+    },
+    "pid": {
+        "left": {
+            "kp": 1.0,
+            "ki": 0.1,
+            "kd": 0.05,
+            "min_output": -100,
+            "max_output": 100,
+            "sample_time": 0.01,
+            "buffer_size": 10,
+            "power_save_mode": true,
+            "idle_timeout": 30,
+            "anti_windup": true,
+            "derivative_filter": true
+        },
+        "right": {
+            "kp": 1.0,
+            "ki": 0.1,
+            "kd": 0.05,
+            "min_output": -100,
+            "max_output": 100,
+            "sample_time": 0.01,
+            "buffer_size": 10,
+            "power_save_mode": true,
+            "idle_timeout": 30,
+            "anti_windup": true,
+            "derivative_filter": true
+        }
+    },
+    "temperature": {
+        "adc_channel": 0,
+        "sample_rate": 10,
+        "buffer_size": 10,
+        "power_save_mode": true,
+        "idle_timeout": 30,
+        "warning_threshold": 70.0,
+        "critical_threshold": 80.0,
+        "conversion_factor": 0.1
+    },
+    "safety": {
+        "check_interval": 0.1,
+        "buffer_size": 10,
+        "power_save_mode": true,
+        "idle_timeout": 30,
+        "emergency_stop_pin": 5,
+        "obstacle_detection_pin": 6,
+        "battery_monitor_pin": 13,
+        "low_battery_threshold": 11.0,
+        "critical_battery_threshold": 10.5,
+        "obstacle_distance_threshold": 0.5,
+        "emergency_stop_timeout": 0.5
+    },
+    "navigation": {
+        "lane_detection": {
+            "camera_index": 0,
+            "frame_width": 320,
+            "frame_height": 240,
+            "roi_top": 120,
+            "roi_bottom": 240,
+            "min_line_length": 50,
+            "max_line_gap": 20,
+            "power_save_mode": true,
+            "idle_timeout": 30
+        },
+        "waypoint": {
+            "max_speed": 50,
+            "min_distance": 0.5,
+            "power_save_mode": true,
+            "idle_timeout": 30
+        }
+    },
+    "web_interface": {
+        "host": "0.0.0.0",
+        "port": 8080,
+        "debug": false,
+        "power_save_mode": true,
+        "idle_timeout": 30
+    },
+    "logging": {
+        "level": "INFO",
+        "file": "logs/pirobot.log",
+        "max_size": 10485760,
+        "backup_count": 5,
+        "power_save_mode": true,
+        "idle_timeout": 30
+    }
+} 

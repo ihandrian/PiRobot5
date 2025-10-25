@@ -1,0 +1,142 @@
+# Raspberry Pi 5 Hardware Configuration
+# Optimized settings for Pi 5's improved hardware
+
+# GPIO Configuration for Pi 5
+gpio:
+  # Motor control pins (compatible with Pi 5)
+  motor_left:
+    pwm_pin: 18
+    direction_pin: 23
+    enable_pin: 24
+  motor_right:
+    pwm_pin: 19
+    direction_pin: 25
+    enable_pin: 12
+  
+  # Encoder pins
+  encoder_left:
+    pin_a: 5
+    pin_b: 6
+  encoder_right:
+    pin_a: 13
+    pin_b: 26
+  
+  # Sensor pins
+  ultrasonic:
+    trigger_pin: 20
+    echo_pin: 21
+  emergency_stop: 16
+  battery_monitor: 17
+  
+  # I2C and SPI (Pi 5 compatible)
+  i2c:
+    sda: 2
+    scl: 3
+  spi:
+    mosi: 10
+    miso: 9
+    sclk: 11
+    ce0: 8
+    ce1: 7
+
+# Camera Configuration for Pi 5
+camera:
+  # Pi 5 supports dual cameras
+  primary:
+    device_id: 0
+    resolution: [1920, 1080]  # Higher resolution for Pi 5
+    fps: 60  # Pi 5 can handle higher FPS
+  secondary:
+    device_id: 1
+    resolution: [1280, 720]
+    fps: 30
+  
+  # Pi 5 specific camera features
+  auto_focus: true
+  image_stabilization: true
+  hdr: true
+
+# Performance Settings for Pi 5
+performance:
+  # CPU optimization
+  cpu_governor: "performance"
+  cpu_frequency: 2400  # MHz (Pi 5 max)
+  
+  # GPU optimization
+  gpu_memory: 128  # MB (optimized for Pi 5)
+  gpu_frequency: 800  # MHz
+  
+  # Memory optimization
+  swap_size: 1024  # MB (reduced for Pi 5's 4GB+ RAM)
+  
+  # Threading optimization
+  max_threads: 4  # Pi 5 has 4 cores
+  thread_priority: "high"
+  
+  # I/O optimization
+  io_scheduler: "deadline"
+  read_ahead: 128  # KB
+
+# Power Management for Pi 5
+power:
+  # Pi 5 requires 5V 4A power supply
+  voltage: 5.0
+  current_limit: 4.0  # Amps
+  
+  # Power saving features
+  power_save_mode: true
+  idle_timeout: 30  # seconds
+  sleep_mode: "light"  # light, deep, off
+  
+  # Battery monitoring
+  battery:
+    low_voltage_threshold: 3.3  # V
+    critical_voltage_threshold: 3.0  # V
+    shutdown_voltage: 2.8  # V
+
+# Network Configuration for Pi 5
+network:
+  # Pi 5 has improved networking
+  wifi:
+    band: "5GHz"  # Pi 5 supports 5GHz
+    protocol: "802.11ac"
+  ethernet:
+    speed: "1000Mbps"  # Gigabit Ethernet
+  bluetooth:
+    version: "5.0"  # Pi 5 has Bluetooth 5.0
+
+# Storage Configuration for Pi 5
+storage:
+  # Pi 5 supports M.2 NVMe SSD
+  primary: "microsd"
+  secondary: "nvme"  # If M.2 HAT is installed
+  
+  # Performance settings
+  cache_size: 64  # MB
+  read_ahead: 128  # KB
+  write_back: true
+
+# Thermal Management for Pi 5
+thermal:
+  # Pi 5 may need active cooling
+  active_cooling: true
+  fan_pin: 14
+  temperature_thresholds:
+    warning: 70  # °C
+    critical: 80  # °C
+    shutdown: 85  # °C
+  
+  # Thermal throttling
+  throttle_enabled: true
+  throttle_temperature: 75  # °C
+
+# Real-time Configuration for Pi 5
+realtime:
+  # Pi 5 has better real-time capabilities
+  priority: 99  # Highest priority
+  scheduler: "fifo"
+  cpu_affinity: [0, 1]  # Use first two cores for real-time tasks
+  
+  # Interrupt handling
+  interrupt_threading: true
+  interrupt_priority: "high"

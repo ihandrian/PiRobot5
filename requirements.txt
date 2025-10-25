@@ -1,0 +1,73 @@
+# Core dependencies - Updated for Raspberry Pi 5
+numpy>=1.24.0  # Updated for Pi 5 ARM64 support
+opencv-python>=4.8.0  # Updated for Pi 5 with better ARM64 support
+opencv-python-headless>=4.8.0  # Headless version for servers
+
+# PyTorch - Updated for Pi 5 ARM64
+# For Raspberry Pi 5, use this command:
+# pip install torch>=2.0.0 torchvision>=0.15.0 torchaudio>=2.0.0 -f https://download.pytorch.org/whl/torch_stable.html
+
+matplotlib>=3.7.0  # Updated for Pi 5
+tqdm>=4.65.0
+scikit-learn>=1.3.0  # Updated for Pi 5 ARM64
+scipy>=1.11.0  # Updated for Pi 5
+networkx>=3.0
+
+# Web interface - Updated for Pi 5
+flask>=2.3.0  # Updated for Pi 5 compatibility
+flask-socketio>=5.3.0
+websockets>=11.0
+
+# Hardware control - Updated for Pi 5
+RPi.GPIO>=0.7.1  # Updated for Pi 5 GPIO compatibility
+gpiozero>=1.6.2  # Alternative GPIO library with Pi 5 support
+spidev>=3.6  # Updated SPI support
+
+# Coral TPU support (optional)
+# pycoral>=2.0.0
+# tflite-runtime>=2.5.0
+
+# System monitoring - Updated for Pi 5
+psutil>=5.9.0  # Updated for Pi 5 system monitoring
+
+# Configuration and data handling
+pyyaml>=6.0  # Updated for Pi 5
+json5>=0.9.14
+
+# Type hints
+typing-extensions>=4.5.0
+
+# Serial communication
+pyserial>=3.5
+
+# GPS functionality
+gpsd-py3>=0.3.0
+pynmea2>=1.19.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Testing - Updated for Pi 5
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Code formatting
+black>=23.0.0
+
+# Linting
+flake8>=6.0.0
+
+# Type checking
+mypy>=1.5.0
+
+# Import sorting
+isort>=5.12.0
+
+# Documentation
+sphinx>=7.0.0
+sphinx-rtd-theme>=1.3.0
+
+# Pi 5 specific optimizations
+# Add Pi 5 specific packages
+adafruit-circuitpython-neopixel>=6.4.0  # For advanced LED control
+adafruit-circuitpython-motor>=3.4.0    # Enhanced motor control 

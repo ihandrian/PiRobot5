@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PiRobot V4</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/modals.css">
+    <link rel="stylesheet" href="/static/css/sidebar.css">
+    <link rel="stylesheet" href="/static/css/map.css">
+</head>
+<body>
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-content">
+            <!-- Navigation Mode Section -->
+            <div class="sidebar-section">
+                <h3><i class="fas fa-compass"></i> Navigation Mode</h3>
+                <div class="nav-modes">
+                    <button class="mode-btn" onclick="toggleModal('manualModal', true)" data-mode="manual">
+                        <i class="fas fa-gamepad"></i> Manual Control
+                    </button>
+                    <button class="mode-btn" onclick="toggleModal('autonomousModal', true)" data-mode="autonomous">
+                        <i class="fas fa-robot"></i> Autonomous Navigation
+                    </button>
+                    <button class="mode-btn" onclick="toggleModal('hybridModal', true)" data-mode="hybrid">
+                        <i class="fas fa-random"></i> Hybrid Mode
+                    </button>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="sidebar-section">
+                <h3><i class="fas fa-cog"></i> Settings</h3>
+                <div class="setting-item">
+                    <label>Speed Control</label>
+                    <input type="range" id="speed" min="0" max="100" value="50">
+                </div>
+                <div class="setting-item">
+                    <label>Person Detection</label>
+                    <button class="btn" id="detectBtn">Off</button>
+                </div>
+                <div class="setting-item">
+                    <label>Follow Mode</label>
+                    <button class="btn" id="followBtn">Off</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this after the sidebar and before main content -->
+    <div class="status-bar">
+        <div class="status-grid">
+            <div class="status-item">
+                <i class="fas fa-microchip"></i>
+                <span id="cpu">CPU: -%</span>
+            </div>
+            <div class="status-item">
+                <i class="fas fa-memory"></i>
+                <span id="mem">RAM: -%</span>
+            </div>
+            <div class="status-item">
+                <i class="fas fa-temperature-high"></i>
+                <span id="temp">-°C</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add these modal containers after the map-overlay div -->
+    <div class="mode-modal" id="manualModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-gamepad"></i> Manual Control Settings</h3>
+                <button class="btn-close" onclick="toggleModal('manualModal', false)">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <label>Speed Control</label>
+                    <input type="range" id="manualSpeed" min="0" max="100" value="50">
+                    <span id="manualSpeedValue">50%</span>
+                </div>
+                <div class="setting-item">
+                    <label>Person Detection</label>
+                    <button class="btn" id="manualDetectBtn">Off</button>
+                </div>
+                <div class="setting-item">
+                    <label>Motor Calibration</label>
+                    <button class="btn" id="calibrateBtn" onclick="navigationController.calibrateMotors()">
+                        Calibrate Motors
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mode-modal" id="autonomousModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-robot"></i> Autonomous Navigation</h3>
+                <button class="btn-close" onclick="toggleModal('autonomousModal', false)">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="autonomousMap" class="modal-map"></div>
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <div class="legend-marker legend-robot"></div>
+                        <span>Robot Location</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-marker legend-waypoint"></div>
+                        <span>Waypoint</span>
+                    </div>
+                </div>
+                <div class="waypoint-list" id="modalWaypointList"></div>
+                <div class="setting-item">
+                    <label>Navigation Speed</label>
+                    <input type="range" id="autoSpeed" min="0" max="100" value="70">
+                    <span id="autoSpeedValue">70%</span>
+                </div>
+                <div class="setting-item">
+                    <label>Obstacle Avoidance</label>
+                    <button class="btn active" id="obstacleBtn">On</button>
+                </div>
+                <div class="waypoint-actions">
+                    <button class="btn" id="modalAddWaypoint">
+                        <i class="fas fa-plus"></i> Add Point
+                    </button>
+                    <button class="btn" id="modalStartNavigation">
+                        <i class="fas fa-play"></i> Start Navigation
+                    </button>
+                    <button class="btn" id="modalClearWaypoints">
+                        <i class="fas fa-trash"></i> Clear All
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mode-modal" id="hybridModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-random"></i> Hybrid Mode Settings</h3>
+                <button class="btn-close" onclick="toggleModal('hybridModal', false)">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <label>Follow Mode</label>
+                    <button class="btn" id="hybridFollowBtn">Off</button>
+                </div>
+                <div class="setting-item">
+                    <label>Follow Distance</label>
+                    <input type="range" id="followDistance" min="1" max="5" value="2">
+                    <span id="followDistanceValue">2m</span>
+                </div>
+                <div class="setting-item">
+                    <label>Auto-Return</label>
+                    <button class="btn" id="autoReturnBtn">Off</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="camera-container">
+            <img id="camera" class="camera-feed" src="/video_feed" alt="Camera Feed">
+        </div>
+    </div>
+
+    <!-- Floating Joystick -->
+    <div class="joystick-container">
+        <div class="joystick" id="joystick">
+            <div class="joystick-knob" id="knob"></div>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- Internal JavaScript -->
+    <script src="/static/js/joystick.js"></script>
+    <script src="/static/js/map.js"></script>
+    <script src="/static/js/navigation.js"></script>
+    <script src="/static/js/statusUpdates.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,20 @@
+:root {
+    --primary: #2196F3;
+    --success: #4CAF50;
+    --danger: #F44336;
+    --bg: #f0f2f5;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.4;
+}
+
+/* ... rest of the main styles ... */ 

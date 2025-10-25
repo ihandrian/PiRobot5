@@ -1,0 +1,35 @@
+# Data Collector Configuration
+
+# Data storage settings
+data_dir: "training/collected_data"
+
+# Camera settings
+camera:
+  device_id: 0
+  width: 640
+  height: 480
+  fps: 30
+
+# Sensor settings
+sensors:
+  ultrasonic:
+    count: 4
+    min_distance: 0.02  # meters
+    max_distance: 4.0   # meters
+  position:
+    update_rate: 10     # Hz
+  motor:
+    update_rate: 20     # Hz
+
+# Data collection settings
+collection:
+  max_frames: 10000     # Maximum number of frames to collect
+  frame_skip: 1         # Process every Nth frame
+  save_interval: 100    # Save data every N frames
+  compression: 80       # JPEG compression quality (0-100)
+
+# UI settings
+ui:
+  window_size: [800, 600]
+  update_rate: 30       # Hz
+  theme: "light"        # light or dark 

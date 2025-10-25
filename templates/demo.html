@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboCompanion v2.0 - Demo Controller</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2196F3;
+            --secondary-color: #FFC107;
+            --success-color: #4CAF50;
+            --danger-color: #F44336;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .control-panel {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            padding: 25px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .control-panel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .video-feed {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            background: #2c3e50;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-feed.demo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .joystick-container {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            background: rgba(0,0,0,0.05);
+            border-radius: 50%;
+            margin: 20px auto;
+            border: 3px solid var(--primary-color);
+        }
+
+        .joystick {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(33,150,243,0.3);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .joystick:hover {
+            box-shadow: 0 0 30px rgba(33,150,243,0.5);
+        }
+
+        .control-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 5px;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .status-indicator {
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px 0;
+            background: #f8f9fa;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .speed-control {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .detection-box {
+            position: absolute;
+            border: 3px solid var(--success-color);
+            border-radius: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(76,175,80,0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(76,175,80,0); }
+            100% { box-shadow: 0 0 0 0 rgba(76,175,80,0); }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+
+        .stat-card i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .mode-toggle {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .mode-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: var(--success-color);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        #coordinates {
+            margin-top: 10px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-lg-8">
+                <div class="control-panel">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3><i class="fas fa-video"></i> Camera Feed</h3>
+                        <div class="d-flex">
+                            <select class="form-select me-2" style="width: auto;">
+                                <option>Camera 1</option>
+                                <option>Camera 2</option>
+                                <option>Camera 3</option>
+                            </select>
+                            <button class="btn btn-outline-primary">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="video-feed demo">
+                        <div class="detection-box" style="top: 100px; left: 200px; width: 150px; height: 200px;">
+                        </div>
+                        [Camera Feed Simulation]
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-microchip"></i>
+                            <h6>CPU</h6>
+                            <span id="cpuUsage">32%</span>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-memory"></i>
+                            <h6>Memory</h6>
+                            <span id="memoryUsage">45%</span>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-temperature-high"></i>
+                            <h6>Temperature</h6>
+                            <span id="temperature">48°C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="control-panel">
+                    <h3 class="mb-4"><i class="fas fa-gamepad"></i> Controls</h3>
+                    <div class="joystick-container" id="joystickContainer">
+                        <div class="joystick" id="joystick"></div>
+                    </div>
+                    <div id="coordinates" class="text-center">X: 0.00, Y: 0.00</div>
+                    <div class="speed-control">
+                        <label class="form-label d-flex justify-content-between">
+                            Speed Control
+                            <span id="speedValue">50%</span>
+                        </label>
+                        <input type="range" class="form-range" id="speedControl" min="0" max="100" value="50">
+                    </div>
+                    <div class="status-indicator">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="mb-0">Person Detection</h5>
+                            <label class="mode-toggle">
+                                <input type="checkbox" id="detectionToggle">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Follow Mode</h5>
+                            <label class="mode-toggle">
+                                <input type="checkbox" id="followToggle">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Joystick Controller
+        class JoystickDemo {
+            constructor(container, onChange) {
+                this.container = container;
+                this.joystick = container.querySelector('.joystick');
+                this.coordinates = document.getElementById('coordinates');
+                this.bounds = container.getBoundingClientRect();
+                this.center = {
+                    x: this.bounds.width / 2,
+                    y: this.bounds.height / 2
+                };
+                this.active = false;
+                this.onChange = onChange;
+                this.setupEvents();
+            }
+
+            setupEvents() {
+                const moveJoystick = (e) => {
+                    if (!this.active) return;
+                    
+                    e.preventDefault();
+                    const touch = e.type.startsWith('touch') ? e.touches[0] : e;
+                    const rect = this.container.getBoundingClientRect();
+                    let x = touch.clientX - rect.left - this.center.x;
+                    let y = touch.clientY - rect.top - this.center.y;
+                    
+                    const distance = Math.min(Math.sqrt(x*x + y*y), this.center.x);
+                    const angle = Math.atan2(y, x);
+                    
+                    x = Math.cos(angle) * distance;
+                    y = Math.sin(angle) * distance;
+                    
+                    this.joystick.style.transform = `translate(${x}px, ${y}px)`;
+                    
+                    // Normalize values between -1 and 1
+                    const normalizedX = (x / this.center.x).toFixed(2);
+                    const normalizedY = (y / this.center.y).toFixed(2);
+                    
+                    this.coordinates.textContent = `X: ${normalizedX}, Y: ${normalizedY}`;
+                    this.onChange(normalizedX, normalizedY);
+                };
+
+                const endMove = () => {
+                    if (!this.active) return;
+                    this.active = false;
+                    this.joystick.style.transform = '';
+                    this.coordinates.textContent = 'X: 0.00, Y: 0.00';
+                    this.onChange(0, 0);
+                };
+
+                // Mouse events
+                this.container.addEventListener('mousedown', (e) => {
+                    this.active = true;
+                    moveJoystick(e);
+                });
+                document.addEventListener('mousemove', moveJoystick);
+                document.addEventListener('mouseup', endMove);
+
+                // Touch events
+                this.container.addEventListener('touchstart', (e) => {
+                    this.active = true;
+                    moveJoystick(e);
+                });
+                document.addEventListener('touchmove', moveJoystick);
+                document.addEventListener('touchend', endMove);
+            }
+        }
+
+        // Initialize joystick
+        const joystick = new JoystickDemo(
+            document.getElementById('joystickContainer'),
+            (x, y) => {
+                // Demo feedback only
+                console.log(`Joystick position: ${x}, ${y}`);
+            }
+        );
+
+        // Speed control
+        document.getElementById('speedControl').addEventListener('input', function() {
+            document.getElementById('speedValue').textContent = this.value + '%';
+        });
+
+        // Demo animation for detection box
+        let box = document.querySelector('.detection-box');
+        let direction = 1;
+        let position = 200;
+
+        setInterval(() => {
+            position += direction * 2;
+            if (position > 400 || position < 200) direction *= -1;
+            box.style.left = position + 'px';
+        }, 50);
+
+        // Demo system stats update
+        setInterval(() => {
+            document.getElementById('cpuUsage').textContent = Math.floor(Math.random() * 40 + 20) + '%';
+            document.getElementById('memoryUsage').textContent = Math.floor(Math.random() * 30 + 30) + '%';
+            document.getElementById('temperature').textContent = Math.floor(Math.random() * 10 + 45) + '°C';
+        }, 2000);
+    </script>
+</body>
+</html> 
