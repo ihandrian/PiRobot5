@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-PiRobot V.4 Installation Script
-This script handles the installation and setup of PiRobot V.4.
+PiRobot5 Installation Script
+This script handles the installation and setup of PiRobot5.
 """
 
 import os
@@ -20,7 +20,7 @@ def check_python_version():
 def check_os():
     """Check if operating system is supported."""
     if platform.system() != "Linux":
-        print("Warning: PiRobot V.4 is designed for Linux systems")
+        print("Warning: PiRobot5 is designed for Linux systems")
         print("Some features may not work correctly on other operating systems")
 
 def create_virtual_environment():
@@ -75,7 +75,7 @@ def setup_logging():
 
 def main():
     """Main installation function."""
-    print("Starting PiRobot V.4 installation...")
+    print("Starting PiRobot5 installation...")
 
     # Run installation checks
     check_python_version()

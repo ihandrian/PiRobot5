@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-PiRobot V.4 Diagnostic Script
-This script performs system diagnostics and troubleshooting for PiRobot V.4.
+PiRobot5 Diagnostic Script
+This script performs system diagnostics and troubleshooting for PiRobot5.
 """
 
 import os
@@ -153,7 +153,7 @@ def generate_report():
         report_file = report_dir / f"diagnostic_report_{timestamp}.txt"
         
         with open(report_file, 'w') as f:
-            f.write("PiRobot V.4 Diagnostic Report\n")
+            f.write("PiRobot5 Diagnostic Report\n")
             f.write("============================\n\n")
             f.write(f"Date: {datetime.now()}\n")
             f.write(f"System: {platform.system()} {platform.release()}\n")
@@ -184,7 +184,7 @@ def generate_report():
 def main():
     """Main diagnostic function."""
     try:
-        logger.info("Starting PiRobot V.4 diagnostics...")
+        logger.info("Starting PiRobot5 diagnostics...")
 
         # Run diagnostic checks
         checks = [

@@ -1,4 +1,4 @@
-# Google Colab Training Guide for PiRobot V.4
+# Google Colab Training Guide for PiRobot5
 
 This guide explains how to train your PiRobot for autonomous navigation using Google Colab. The process involves three main steps:
 1. Data Collection (Manual Mode)
@@ -8,7 +8,7 @@ This guide explains how to train your PiRobot for autonomous navigation using Go
 ## 1. Data Collection (Manual Mode)
 
 ### Prerequisites
-- Raspberry Pi 3B with PiRobot V.4 installed
+- Raspberry Pi 3B with PiRobot5 installed
 - USB Camera connected
 - Ultrasonic sensors properly configured
 - Sufficient storage space for data collection

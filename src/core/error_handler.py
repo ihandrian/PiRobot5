@@ -1,5 +1,5 @@
 """
-Error Handler for PiRobot V.4
+Error Handler for PiRobot5
 Handles errors, logging, and recovery mechanisms
 """
 

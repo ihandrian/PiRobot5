@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-PiRobot V.4 Lint Script
-This script performs code quality and style checks for PiRobot V.4.
+PiRobot5 Lint Script
+This script performs code quality and style checks for PiRobot5.
 """
 
 import os
@@ -135,7 +135,7 @@ def generate_lint_report():
         report_file = report_dir / f"lint_report_{timestamp}.txt"
         
         with open(report_file, 'w') as f:
-            f.write("PiRobot V.4 Lint Report\n")
+            f.write("PiRobot5 Lint Report\n")
             f.write("=====================\n\n")
             f.write(f"Date: {datetime.now()}\n\n")
             
@@ -174,7 +174,7 @@ def cleanup_lint_results():
 def main():
     """Main lint function."""
     try:
-        logger.info("Starting PiRobot V.4 lint checks...")
+        logger.info("Starting PiRobot5 lint checks...")
 
         # Create lint results directory
         Path("lint_results").mkdir(exist_ok=True)

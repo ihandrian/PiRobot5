@@ -1,5 +1,5 @@
 """
-GPS Handler for PiRobot V.4
+GPS Handler for PiRobot5
 Handles GPS data collection and processing
 """
 

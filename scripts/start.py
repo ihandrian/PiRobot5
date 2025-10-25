@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-PiRobot V.4 Start Script
-This script starts the PiRobot V.4 system with optimized performance.
+PiRobot5 Start Script
+This script starts the PiRobot5 system with optimized performance.
 """
 
 import os
@@ -118,7 +118,7 @@ class ProcessManager:
             self.stop_process(name)
             
 class PiRobotStart:
-    """PiRobot V.4 startup manager."""
+    """PiRobot5 startup manager."""
     
     def __init__(self):
         """Initialize startup manager."""
@@ -183,9 +183,9 @@ class PiRobotStart:
             return False
             
     def start(self):
-        """Start PiRobot V.4 system."""
+        """Start PiRobot5 system."""
         try:
-            logger.info("Starting PiRobot V.4...")
+            logger.info("Starting PiRobot5...")
             
             # Check dependencies and resources
             if not self._check_dependencies() or not self._check_resources():
@@ -216,7 +216,7 @@ class PiRobotStart:
                     "python3 src/web/app.py"
                 )
                 
-            logger.info("PiRobot V.4 started successfully")
+            logger.info("PiRobot5 started successfully")
             
             # Keep running until interrupted
             try:
@@ -232,8 +232,8 @@ class PiRobotStart:
             sys.exit(1)
             
     def stop(self):
-        """Stop PiRobot V.4 system."""
-        logger.info("Stopping PiRobot V.4...")
+        """Stop PiRobot5 system."""
+        logger.info("Stopping PiRobot5...")
         
         # Stop all processes
         self.process_manager.stop_all()
@@ -241,7 +241,7 @@ class PiRobotStart:
         # Stop system monitor
         self.monitor.stop()
         
-        logger.info("PiRobot V.4 stopped")
+        logger.info("PiRobot5 stopped")
         
 def main():
     """Main function."""

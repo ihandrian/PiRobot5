@@ -1,8 +1,8 @@
-# PiRobot V.4 API Documentation
+# PiRobot5 API Documentation
 
 ## Overview
 
-This document provides detailed API documentation for the PiRobot V.4 system. It covers all major components, their interfaces, and usage examples.
+This document provides detailed API documentation for the PiRobot5 system. It covers all major components, their interfaces, and usage examples.
 
 ## Core Components
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-PiRobot V.4 Test Script
-This script runs system tests for PiRobot V.4.
+PiRobot5 Test Script
+This script runs system tests for PiRobot5.
 """
 
 import os
@@ -76,7 +76,7 @@ def generate_test_report():
         report_file = report_dir / f"test_report_{timestamp}.txt"
         
         with open(report_file, 'w') as f:
-            f.write("PiRobot V.4 Test Report\n")
+            f.write("PiRobot5 Test Report\n")
             f.write("=====================\n\n")
             f.write(f"Date: {datetime.now()}\n\n")
             
@@ -115,7 +115,7 @@ def cleanup_test_results():
 def main():
     """Main test function."""
     try:
-        logger.info("Starting PiRobot V.4 tests...")
+        logger.info("Starting PiRobot5 tests...")
 
         # Create test results directory
         Path("test_results").mkdir(exist_ok=True)

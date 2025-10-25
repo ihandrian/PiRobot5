@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-PiRobot V.4 Update Script
-This script handles system updates for PiRobot V.4.
+PiRobot5 Update Script
+This script handles system updates for PiRobot5.
 """
 
 import os
@@ -96,7 +96,7 @@ def verify_installation():
 def main():
     """Main update function."""
     try:
-        logger.info("Starting PiRobot V.4 update...")
+        logger.info("Starting PiRobot5 update...")
 
         # Backup configuration
         if not backup_configuration():
@@ -117,7 +117,7 @@ def main():
             logger.error("Update aborted: Installation verification failed")
             sys.exit(1)
 
-        logger.info("PiRobot V.4 update completed successfully")
+        logger.info("PiRobot5 update completed successfully")
         logger.info("Please restart the robot to apply all updates")
 
     except Exception as e:

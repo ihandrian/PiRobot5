@@ -1,4 +1,4 @@
-# Security Guidelines for PiRobot V.4
+# Security Guidelines for PiRobot5
 
 ## 🔒 Pre-Deployment Security Checklist
 

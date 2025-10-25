@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-PiRobot V.4 Stop Script
-This script stops the PiRobot V.4 system with optimized performance.
+PiRobot5 Stop Script
+This script stops the PiRobot5 system with optimized performance.
 """
 
 import os
@@ -147,7 +147,7 @@ class ResourceCleanup:
             logger.error(f"File cleanup failed: {e}")
             
 class PiRobotStop:
-    """PiRobot V.4 shutdown manager."""
+    """PiRobot5 shutdown manager."""
     
     def __init__(self):
         """Initialize shutdown manager."""
@@ -155,9 +155,9 @@ class PiRobotStop:
         self.resource_cleanup = ResourceCleanup()
         
     def stop(self):
-        """Stop PiRobot V.4 system."""
+        """Stop PiRobot5 system."""
         try:
-            logger.info("Stopping PiRobot V.4...")
+            logger.info("Stopping PiRobot5...")
             
             # Stop core processes
             core_processes = [
@@ -180,7 +180,7 @@ class PiRobotStop:
             self.resource_cleanup.cleanup_serial()
             self.resource_cleanup.cleanup_files()
             
-            logger.info("PiRobot V.4 stopped successfully")
+            logger.info("PiRobot5 stopped successfully")
             
         except Exception as e:
             logger.error(f"Shutdown error: {e}")

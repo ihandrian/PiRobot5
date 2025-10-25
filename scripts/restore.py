@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-PiRobot V.4 Restore Script
-This script handles system restoration from backups for PiRobot V.4.
+PiRobot5 Restore Script
+This script handles system restoration from backups for PiRobot5.
 """
 
 import os
@@ -134,7 +134,7 @@ def cleanup(backup_dir):
 def main():
     """Main restore function."""
     try:
-        logger.info("Starting PiRobot V.4 restore...")
+        logger.info("Starting PiRobot5 restore...")
 
         # List and select backup
         backups = list_available_backups()
@@ -159,7 +159,7 @@ def main():
         # Clean up
         cleanup(backup_dir)
 
-        logger.info("PiRobot V.4 restore completed successfully")
+        logger.info("PiRobot5 restore completed successfully")
         logger.info("Please restart the robot to apply restored configuration")
 
     except Exception as e:

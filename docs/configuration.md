@@ -1,8 +1,8 @@
-# PiRobot V.4 Configuration Guide
+# PiRobot5 Configuration Guide
 
 ## Overview
 
-This guide explains how to configure PiRobot V.4 for optimal performance. The system uses a JSON-based configuration file located at `config/config.txt`.
+This guide explains how to configure PiRobot5 for optimal performance. The system uses a JSON-based configuration file located at `config/config.txt`.
 
 ## Configuration Structure
 

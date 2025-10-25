@@ -1,5 +1,5 @@
 """
-Behavior Cloning for PiRobot V.4
+Behavior Cloning for PiRobot5
 Implements neural network-based behavior cloning for autonomous navigation
 """
 

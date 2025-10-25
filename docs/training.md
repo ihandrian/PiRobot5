@@ -2,7 +2,7 @@
 
 ## Overview
 
-The training system provides tools for training the PiRobot V.4's room mapping and navigation capabilities. It includes data collection, preprocessing, model training, and deployment tools.
+The training system provides tools for training the PiRobot5's room mapping and navigation capabilities. It includes data collection, preprocessing, model training, and deployment tools.
 
 ## Components
 

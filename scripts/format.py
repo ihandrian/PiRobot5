@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-PiRobot V.4 Format Script
-This script formats code according to style guidelines for PiRobot V.4.
+PiRobot5 Format Script
+This script formats code according to style guidelines for PiRobot5.
 """
 
 import os
@@ -117,7 +117,7 @@ def generate_format_report():
         report_file = report_dir / f"format_report_{timestamp}.txt"
         
         with open(report_file, 'w') as f:
-            f.write("PiRobot V.4 Format Report\n")
+            f.write("PiRobot5 Format Report\n")
             f.write("=====================\n\n")
             f.write(f"Date: {datetime.now()}\n\n")
             
@@ -156,7 +156,7 @@ def cleanup_format_results():
 def main():
     """Main format function."""
     try:
-        logger.info("Starting PiRobot V.4 code formatting...")
+        logger.info("Starting PiRobot5 code formatting...")
 
         # Create format results directory
         Path("format_results").mkdir(exist_ok=True)

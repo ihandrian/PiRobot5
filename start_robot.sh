@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# PiRobot V.4 - Raspberry Pi 5 Startup Script
+# PiRobot5 - Raspberry Pi 5 Startup Script
 # Optimized for Pi 5 performance and features
 
 # Colors for output
@@ -44,7 +44,7 @@ print_header() {
     echo -e "${NC}"
 }
 
-print_header "PiRobot V.4 - Raspberry Pi 5 Startup"
+print_header "PiRobot5 - Raspberry Pi 5 Startup"
 
 # Check if running on Pi 5
 print_info "Checking system compatibility..."
@@ -160,7 +160,7 @@ else
 fi
 
 # Start the robot
-print_header "Starting PiRobot V.4"
+print_header "Starting PiRobot5"
 print_status "Launching robot with Pi 5 optimizations..."
 
 # Set environment variables for Pi 5

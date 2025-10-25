@@ -1,6 +1,6 @@
-# PiRobot V.4 - Raspberry Pi 5 Upgrade Guide
+# PiRobot5 - Raspberry Pi 5 Upgrade Guide
 
-This guide will help you upgrade your PiRobot V.4 from Raspberry Pi 3B to Raspberry Pi 5, taking advantage of the improved performance and new features.
+This guide will help you upgrade your PiRobot5 from Raspberry Pi 3B to Raspberry Pi 5, taking advantage of the improved performance and new features.
 
 ## Overview of Changes
 

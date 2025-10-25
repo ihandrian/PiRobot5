@@ -6,7 +6,7 @@ import numpy as np
 import RPi.GPIO as GPIO
 
 def test_installation():
-    print("Testing PiRobot V.4 installation...")
+    print("Testing PiRobot5 installation...")
     
     # Test Python version
     print(f"Python version: {sys.version}")

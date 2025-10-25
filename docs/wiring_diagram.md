@@ -1,4 +1,4 @@
-# PiRobot V.4 Wiring Diagram
+# PiRobot5 Wiring Diagram
 
 ## Hardware Components
 - Raspberry Pi 3B (Main Controller)

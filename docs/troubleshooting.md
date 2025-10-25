@@ -1,8 +1,8 @@
-# PiRobot V.4 Troubleshooting Guide
+# PiRobot5 Troubleshooting Guide
 
 ## Overview
 
-This guide provides solutions for common issues that may arise when using PiRobot V.4. It covers hardware, software, and integration problems, along with their respective solutions.
+This guide provides solutions for common issues that may arise when using PiRobot5. It covers hardware, software, and integration problems, along with their respective solutions.
 
 ## Common Issues and Solutions
 

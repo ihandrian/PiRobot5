@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Data Collector is a graphical interface for collecting training data for the PiRobot V.4 system. It captures camera frames and sensor data in real-time, providing a user-friendly way to gather training data for the room mapping and navigation systems.
+The Data Collector is a graphical interface for collecting training data for the PiRobot5 system. It captures camera frames and sensor data in real-time, providing a user-friendly way to gather training data for the room mapping and navigation systems.
 
 ## Features
 

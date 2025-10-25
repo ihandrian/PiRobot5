@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-PiRobot V.4 Backup Script
-This script handles system backups for PiRobot V.4.
+PiRobot5 Backup Script
+This script handles system backups for PiRobot5.
 """
 
 import os
@@ -110,7 +110,7 @@ def cleanup_old_backups():
 def main():
     """Main backup function."""
     try:
-        logger.info("Starting PiRobot V.4 backup...")
+        logger.info("Starting PiRobot5 backup...")
 
         # Create backup directory
         backup_dir = create_backup_directory()
@@ -134,7 +134,7 @@ def main():
         # Clean up old backups
         cleanup_old_backups()
 
-        logger.info("PiRobot V.4 backup completed successfully")
+        logger.info("PiRobot5 backup completed successfully")
 
     except Exception as e:
         logger.error(f"Backup error: {e}")

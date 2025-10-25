@@ -1,5 +1,5 @@
 """
-Lane Detection for PiRobot V.4
+Lane Detection for PiRobot5
 Handles lane detection and following using computer vision
 """
 

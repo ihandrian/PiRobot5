@@ -33,7 +33,7 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-print_status "Starting Raspberry Pi 5 setup for PiRobot V.4..."
+print_status "Starting Raspberry Pi 5 setup for PiRobot5..."
 
 # Update system
 print_status "Updating system packages..."
@@ -185,7 +185,7 @@ import numpy as np
 import RPi.GPIO as GPIO
 
 def test_installation():
-    print("Testing PiRobot V.4 installation...")
+    print("Testing PiRobot5 installation...")
     
     # Test Python version
     print(f"Python version: {sys.version}")
