@@ -4,7 +4,8 @@ import threading
 from typing import Dict, List, Optional, Tuple, Callable
 from dataclasses import dataclass
 from enum import Enum, auto
-from collections import deque, PriorityQueue
+from collections import deque
+from queue import PriorityQueue
 import numpy as np
 import cv2
 import RPi.GPIO as GPIO
